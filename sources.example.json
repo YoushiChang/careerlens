@@ -1,0 +1,21 @@
+[
+  { "name": "腾讯招聘官网", "type": "tencent", "homepage": "https://careers.tencent.com/search.html" },
+  { "name": "小米招聘官网", "type": "xiaomi", "homepage": "https://hr.xiaomi.com/website/opportunities.html" },
+  { "name": "网易招聘官网", "type": "netease", "homepage": "https://hr.163.com/job-list.html" },
+  { "name": "美团招聘官网", "type": "meituan", "homepage": "https://career.meituan.com/web/position" },
+  { "name": "智联公开搜索页", "type": "zhilian", "homepage": "https://sou.zhaopin.com/" },
+  { "name": "Stripe 官网 · Greenhouse", "type": "greenhouse", "board": "stripe", "company": "Stripe", "homepage": "https://stripe.com/jobs" },
+  { "name": "Spotify 官网 · Lever", "type": "lever", "board": "spotify", "company": "Spotify", "homepage": "https://www.lifeatspotify.com/jobs" },
+  { "name": "OpenAI 官网 · Ashby", "type": "ashby", "board": "openai", "company": "OpenAI", "homepage": "https://openai.com/careers/search/" },
+  { "name": "猎聘", "endpoint": "", "tokenEnv": "LIEPIN_ADAPTER_TOKEN", "homepage": "https://www.liepin.com/zhaopin/", "note": "公开搜索返回动态页面，查询接口返回业务错误 -1400，待可用数据通路" },
+  { "name": "应届生求职网", "endpoint": "", "tokenEnv": "YINGJIESHENG_ADAPTER_TOKEN", "homepage": "https://www.yingjiesheng.com/", "note": "公开职位接口返回鉴权错误，需核实请求鉴权参数或授权通路" },
+  { "name": "BOSS直聘", "endpoint": "", "tokenEnv": "BOSS_ADAPTER_TOKEN", "homepage": "https://www.zhipin.com/", "note": "直连查询触发环境校验，需可用授权数据通路" },
+  { "name": "LinkedIn", "endpoint": "", "tokenEnv": "LINKEDIN_ADAPTER_TOKEN", "homepage": "https://www.linkedin.com/jobs/", "note": "待配置授权数据通路；公开网页可读不等于提供岗位搜索 API" },
+  { "name": "前程无忧", "endpoint": "", "tokenEnv": "JOB51_ADAPTER_TOKEN", "homepage": "https://we.51job.com/", "note": "公开搜索页仅返回动态页面，尚未验证可用的岗位列表数据" },
+  { "name": "字节跳动官网", "endpoint": "", "tokenEnv": "BYTEDANCE_ADAPTER_TOKEN", "homepage": "https://jobs.bytedance.com/", "note": "重新测试旧查询接口仍返回 HTTP 405，新路径跳转认证页面" },
+  { "name": "哔哩哔哩官网", "endpoint": "", "tokenEnv": "BILIBILI_ADAPTER_TOKEN", "homepage": "https://jobs.bilibili.com/social/positions", "note": "已找到职位接口，当前请求缺少会话参数，待可用公开或授权通路" },
+  { "name": "京东招聘官网", "endpoint": "", "tokenEnv": "JD_ADAPTER_TOKEN", "homepage": "https://zhaopin.jd.com/", "note": "首页可访问，职位查询页面跳转登录，未获取可用岗位数据" },
+  { "name": "阿里招聘官网", "endpoint": "", "tokenEnv": "ALIBABA_ADAPTER_TOKEN", "homepage": "https://talent.alibaba.com/", "note": "公开页面可访问，尚未验证可用岗位数据接口" },
+  { "name": "百度招聘官网", "endpoint": "", "tokenEnv": "BAIDU_ADAPTER_TOKEN", "homepage": "https://talent.baidu.com/jobs/social", "note": "公开页面可访问，测试职位接口返回不支持的请求，待继续适配" },
+  { "name": "小红书招聘官网", "endpoint": "", "tokenEnv": "XHS_ADAPTER_TOKEN", "homepage": "https://job.xiaohongshu.com/social/position", "note": "公开页面可访问，当前未获取可用的职位列表数据" }
+]

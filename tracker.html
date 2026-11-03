@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="CareerLens 职镜 — 基于简历的 AI 求职匹配工作台 Demo" />
+<title>投递追踪 · CareerLens 职镜</title>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="page-tracker">
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="CareerLens 首页">
+      <span class="brand-mark" aria-hidden="true">
+<svg viewBox="0 0 32 32">
+<circle cx="16" cy="16" r="13" fill="currentColor"/>
+<circle cx="16" cy="16" r="7.7" fill="#f6f4ee"/>
+<circle cx="21.8" cy="10.2" r="2.4" fill="#d9f27c"/>
+<path d="M6.3 8.8A13 13 0 0 1 23.2 4" fill="none" stroke="#d9f27c" stroke-width="1.4" stroke-linecap="round" opacity=".78"/>
+</svg>
+</span>
+      <span class="brand-word"><strong>CareerLens</strong><small>职镜</small></span>
+    </a>
+    <nav class="main-nav" aria-label="主导航"><a class="nav-link" data-nav="jobs" href="jobs.html">工作台</a><a class="nav-link" data-nav="upload" href="upload.html">简历解析</a><a class="nav-link" data-nav="sources" href="sources.html">数据来源</a><a class="nav-link is-active" data-nav="tracker" href="tracker.html">投递追踪</a></nav>
+    <div class="header-actions">
+      <a class="header-pref" href="preferences.html">匹配偏好</a>
+      <a class="avatar-link" href="upload.html" aria-label="查看候选人林知夏">林</a>
+    </div>
+  </div>
+</header>
+<main class="page-main">
+<div class="container">
+  <nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="crumb-sep">/</span><span class="crumb-current">投递追踪</span></nav>
+  <header class="page-heading">
+    <div>
+      <span class="eyebrow">APPLICATION TRACKER</span>
+      <h1>每一次投递，<em>都有下文。</em></h1>
+      <p>你通过 CareerLens 前往官方招聘网站申请的职位会出现在这里。演示版只保存当前浏览器的操作记录。</p>
+    </div>
+    <div class="heading-actions"><a class="btn btn-primary" href="jobs.html">继续找工作 <span class="btn-arrow">→</span></a></div>
+  </header>
+
+  <div class="tracker-summary">
+    <div class="tracker-stat"><span>已投递</span><strong id="appliedCount">0</strong><small>个职位</small></div>
+    <div class="tracker-stat"><span>待跟进</span><strong id="followCount">0</strong><small>个职位</small></div>
+    <div class="tracker-stat"><span>收藏机会</span><strong id="savedCount">0</strong><small>个职位</small></div>
+  </div>
+
+  <section class="tracker-root" id="trackerRoot">
+    <div class="empty-state">
+      <span class="empty-mark">↗</span>
+      <span class="side-kicker">NO APPLICATIONS YET</span>
+      <h2>还没有投递记录。</h2>
+      <p>从推荐工作台出发，挑一个你真正想去的职位。</p>
+      <div class="empty-actions"><a class="btn btn-primary" href="jobs.html">去挑一个机会 <span class="btn-arrow">→</span></a><a class="btn btn-secondary" href="job-xhs-growth.html">查看真实职位</a></div>
+    </div>
+  </section>
+
+  <div class="tracker-note"><span class="spark">✦</span><p>演示模式：投递状态只保存在当前浏览器或页面链接中，刷新后不会被上传到服务器。</p></div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="brand brand-inverse" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+<svg viewBox="0 0 32 32">
+<circle cx="16" cy="16" r="13" fill="currentColor"/>
+<circle cx="16" cy="16" r="7.7" fill="#f6f4ee"/>
+<circle cx="21.8" cy="10.2" r="2.4" fill="#d9f27c"/>
+<path d="M6.3 8.8A13 13 0 0 1 23.2 4" fill="none" stroke="#d9f27c" stroke-width="1.4" stroke-linecap="round" opacity=".78"/>
+</svg>
+</span>
+        <span class="brand-word"><strong>CareerLens</strong><small>职镜</small></span>
+      </a>
+      <p>把选择权，交还给求职者。</p>
+    </div>
+    <div class="footer-column">
+      <span>体验完整流程</span>
+      <a href="upload.html">01 简历解析</a>
+      <a href="jobs.html">02 推荐工作台</a>
+      <a href="job-xhs-growth.html">03 匹配报告</a>
+      <a href="apply-xhs-growth.html">04 官方申请</a>
+      <a href="tracker.html">05 投递追踪</a>
+    </div>
+    <div class="footer-column">
+      <span>快速跳转</span>
+      <a href="index.html">首页</a>
+      <a href="preferences.html">匹配偏好</a>
+      <a href="engine.html">技术链路</a>
+      <a href="sources.html">数据来源核验</a>
+      <a href="job-bd-ai-data.html">字节跳动岗位</a>
+    </div>
+    <div class="footer-meta">
+      <span class="footer-demo">REAL DATA · 2026-11-02</span>
+      <p>6 个岗位来自官方招聘网站。候选人画像为样例，匹配分由演示算法计算。</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>CareerLens 职镜 · AI Career Matching</span>
+    <span>岗位来源可核验 · 数据采集于 2026-11-02</span>
+  </div>
+</footer>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

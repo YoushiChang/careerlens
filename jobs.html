@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="CareerLens 职镜 — 基于简历的 AI 求职匹配工作台 Demo" />
+<title>为你推荐 · CareerLens 职镜</title>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="page-jobs">
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="CareerLens 首页">
+      <span class="brand-mark" aria-hidden="true">
+<svg viewBox="0 0 32 32">
+<circle cx="16" cy="16" r="13" fill="currentColor"/>
+<circle cx="16" cy="16" r="7.7" fill="#f6f4ee"/>
+<circle cx="21.8" cy="10.2" r="2.4" fill="#d9f27c"/>
+<path d="M6.3 8.8A13 13 0 0 1 23.2 4" fill="none" stroke="#d9f27c" stroke-width="1.4" stroke-linecap="round" opacity=".78"/>
+</svg>
+</span>
+      <span class="brand-word"><strong>CareerLens</strong><small>职镜</small></span>
+    </a>
+    <nav class="main-nav" aria-label="主导航"><a class="nav-link is-active" data-nav="jobs" href="jobs.html">工作台</a><a class="nav-link" data-nav="upload" href="upload.html">简历解析</a><a class="nav-link" data-nav="sources" href="sources.html">数据来源</a><a class="nav-link" data-nav="tracker" href="tracker.html">投递追踪</a></nav>
+    <div class="header-actions">
+      <a class="header-pref" href="preferences.html">匹配偏好</a>
+      <a class="avatar-link" href="upload.html" aria-label="查看候选人林知夏">林</a>
+    </div>
+  </div>
+</header>
+<main class="page-main">
+<div class="container">
+  <nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="crumb-sep">/</span><span class="crumb-current">推荐工作台</span></nav>
+  <header class="page-heading">
+    <div>
+      <span class="eyebrow">RECOMMENDED FOR YOU</span>
+      <h1>为你匹配的 <em id="heroCount">岗位</em></h1>
+      <p>根据简历方向、技能、工作年限与城市查询可用招聘来源，合并去重后展示本次匹配结果。</p>
+    </div>
+    <div class="heading-actions">
+      <button class="source-badge" type="button" id="sourceBadge" aria-haspopup="dialog" aria-controls="sourceDialog"><i aria-hidden="true"></i><span id="sourceBadgeText">来源 · 待查询</span><span aria-hidden="true">↗</span></button>
+      <a class="btn btn-secondary" href="upload.html">重新解析简历</a>
+      <a class="btn btn-primary" href="preferences.html">调整匹配偏好 <span class="btn-arrow">→</span></a>
+    </div>
+  </header>
+
+  <dialog id="sourceDialog" class="source-dialog" aria-labelledby="sourceDialogTitle">
+    <div class="source-dialog-head"><div><span class="side-kicker">SOURCE STATUS</span><h2 id="sourceDialogTitle">本次招聘来源</h2></div><button type="button" id="closeSourceDialog" aria-label="关闭来源详情">×</button></div>
+    <p id="sourceDialogSummary">解析简历并查询岗位后，可在这里查看各来源状态。</p>
+    <div id="sourceStatusList" class="source-status-list"></div>
+    <p class="source-dialog-note">查询成功但匹配为 0，表示已读取来源但没有岗位符合本次条件。失败或未接通的来源不计入推荐；分页上限下的结果会标注“部分结果”。</p>
+  </dialog>
+
+  <div class="gateway-status" id="gatewayStatus" role="status" aria-live="polite">正在准备岗位查询…</div><p class="gateway-actions"><a href="jobs.html">重新查询</a> · <a href="upload.html">解析简历</a> · <a href="jobs.html?demo=1">预览本地样例库</a></p>
+  <p class="gateway-actions">前往原站搜索：<a id="bossSearch" target="_blank" rel="noopener noreferrer" href="https://www.zhipin.com/">BOSS直聘</a> · <a id="linkedinSearch" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/jobs/">LinkedIn</a> · <a id="job51Search" target="_blank" rel="noopener noreferrer" href="https://we.51job.com/">前程无忧</a>（原站结果不计入本次推荐）</p>
+
+  <div class="jobs-layout">
+    <section class="jobs-content">
+      <div class="personalized-banner" id="personalizedBanner" hidden><span class="spark">✦</span><span id="personalizedText">已根据你的偏好重新计算排序。</span><a href="preferences.html">修改偏好 →</a></div>
+      <div class="jobs-toolbar">
+        <div class="filter-chips" id="filterChips"><button class="filter-chip is-active" type="button" data-filter="all">全部 <span>—</span></button><button class="filter-chip" type="button" data-filter="data">数据/分析 <span>—</span></button><button class="filter-chip" type="button" data-filter="product">产品经理 <span>—</span></button><button class="filter-chip" type="button" data-filter="tech">算法/工程 <span>—</span></button><button class="filter-chip" type="button" data-filter="growth">用户增长 <span>—</span></button></div>
+        <div class="toolbar-right">
+          <span class="result-summary" id="resultSummary"><span id="resultCount">等待查询结果</span></span>
+          <button class="sort-button" type="button" id="sortButton"><span id="sortLabel">匹配度优先</span><span class="sort-icon">↓</span></button>
+        </div>
+      </div>
+
+      <div class="source-strip" id="sources">正在准备来源状态…</div>
+
+      <div class="job-feed" id="jobFeed"></div>
+      <div class="filter-empty" id="filterEmpty" hidden><span class="spark">✦</span><h3>暂时没有匹配岗位</h3><p>请查看上方来源状态，尝试其他方向，或调整简历后重新查询。</p><button type="button" id="resetFilter">查看全部机会</button></div>
+    </section>
+
+    <aside class="jobs-sidebar">
+      <a class="side-profile" href="upload.html#profile">
+        <span class="side-kicker">CANDIDATE PROFILE</span>
+        <div class="side-person">
+          <span class="avatar-small">林</span>
+          <div><strong>林知夏</strong><span>产品经理 · 上海</span></div>
+          <span class="side-arrow">↗</span>
+        </div>
+        <div class="mini-progress"><span style="width:92%"></span></div>
+        <div class="side-profile-meta"><span>画像完整度 92%</span><span>查看完整画像 →</span></div>
+        <div class="side-tags"><span>增长实验</span><span>B端产品</span><span>SQL</span></div>
+      </a>
+
+      <div class="side-card engine-side">
+        <span class="side-kicker">DATA & ENGINE STATUS</span>
+        <h3>简历驱动的岗位查询</h3>
+        <div class="engine-stat"><span>本次匹配</span><strong>—</strong></div>
+        <div class="engine-stat"><span>可用来源</span><strong>—</strong></div>
+        <div class="engine-stat"><span>简历技能</span><strong>—</strong></div>
+        <a class="text-link" href="sources.html">查看来源核验 <span>→</span></a>
+      </div>
+
+      <div class="side-tip">
+        <span class="spark">✦</span>
+        <span class="side-kicker">AI INSIGHT</span>
+        <h3>根据求职方向、技能与城市寻找机会</h3>
+        <p>岗位数量取决于可用来源的实际返回结果。</p>
+        <a class="text-link" href="preferences.html">调整我的优先级 <span>→</span></a>
+      </div>
+
+      <div class="side-note">
+        <span class="side-kicker">DATA NOTE</span>
+        <p>岗位信息来自官方招聘网站，薪资未公开的岗位不展示推断薪资；匹配分由演示算法计算。</p>
+      </div>
+    </aside>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="brand brand-inverse" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+<svg viewBox="0 0 32 32">
+<circle cx="16" cy="16" r="13" fill="currentColor"/>
+<circle cx="16" cy="16" r="7.7" fill="#f6f4ee"/>
+<circle cx="21.8" cy="10.2" r="2.4" fill="#d9f27c"/>
+<path d="M6.3 8.8A13 13 0 0 1 23.2 4" fill="none" stroke="#d9f27c" stroke-width="1.4" stroke-linecap="round" opacity=".78"/>
+</svg>
+</span>
+        <span class="brand-word"><strong>CareerLens</strong><small>职镜</small></span>
+      </a>
+      <p>把选择权，交还给求职者。</p>
+    </div>
+    <div class="footer-column">
+      <span>体验完整流程</span>
+      <a href="upload.html">01 简历解析</a>
+      <a href="jobs.html">02 推荐工作台</a>
+      <a href="job-xhs-growth.html">03 匹配报告</a>
+      <a href="apply-xhs-growth.html">04 官方申请</a>
+      <a href="tracker.html">05 投递追踪</a>
+    </div>
+    <div class="footer-column">
+      <span>快速跳转</span>
+      <a href="index.html">首页</a>
+      <a href="preferences.html">匹配偏好</a>
+      <a href="engine.html">技术链路</a>
+      <a href="sources.html">数据来源核验</a>
+      <a href="job-bd-ai-data.html">字节跳动岗位</a>
+    </div>
+    <div class="footer-meta">
+      <span class="footer-demo">REAL DATA · 2026-11-02</span>
+      <p>工作台按本次简历查询，匹配分为站内规则评分。历史样例通过独立入口预览。</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>CareerLens 职镜 · AI Career Matching</span>
+    <span>动态岗位查询 · 申请前请确认原帖</span>
+  </div>
+</footer>
+<script src="assets/api-config.js"></script>
+<script src="assets/jobs-entry.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="CareerLens 职镜 — 基于简历的 AI 求职匹配工作台 Demo" />
+<title>匹配偏好 · CareerLens 职镜</title>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="page-preferences">
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html" aria-label="CareerLens 首页">
+      <span class="brand-mark" aria-hidden="true">
+<svg viewBox="0 0 32 32">
+<circle cx="16" cy="16" r="13" fill="currentColor"/>
+<circle cx="16" cy="16" r="7.7" fill="#f6f4ee"/>
+<circle cx="21.8" cy="10.2" r="2.4" fill="#d9f27c"/>
+<path d="M6.3 8.8A13 13 0 0 1 23.2 4" fill="none" stroke="#d9f27c" stroke-width="1.4" stroke-linecap="round" opacity=".78"/>
+</svg>
+</span>
+      <span class="brand-word"><strong>CareerLens</strong><small>职镜</small></span>
+    </a>
+    <nav class="main-nav" aria-label="主导航"><a class="nav-link is-active" data-nav="jobs" href="jobs.html">工作台</a><a class="nav-link" data-nav="upload" href="upload.html">简历解析</a><a class="nav-link" data-nav="sources" href="sources.html">数据来源</a><a class="nav-link" data-nav="tracker" href="tracker.html">投递追踪</a></nav>
+    <div class="header-actions">
+      <a class="header-pref" href="preferences.html">匹配偏好</a>
+      <a class="avatar-link" href="upload.html" aria-label="查看候选人林知夏">林</a>
+    </div>
+  </div>
+</header>
+<main class="page-main">
+<div class="container">
+  <nav class="breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="crumb-sep">/</span><a href="jobs.html">推荐工作台</a><span class="crumb-sep">/</span><span class="crumb-current">匹配偏好</span></nav>
+  <header class="page-heading">
+    <div>
+      <span class="eyebrow">PERSONALIZE RANKING</span>
+      <h1>什么对你<em>更重要？</em></h1>
+      <p>拖动四项权重，保存后会回到工作台。匹配分数与推荐顺序会立即重新计算。岗位薪资未公开，因此不纳入排序。</p>
+    </div>
+    <div class="heading-actions"><a class="btn btn-secondary" href="jobs.html">取消并返回</a></div>
+  </header>
+
+  <div class="pref-grid">
+    <form class="pref-card" id="prefForm" action="jobs.html" method="get">
+      <div class="pref-card-head"><div><span class="side-kicker">MATCH WEIGHTS</span><h2>设置你的优先级</h2></div><button class="reset-button" type="button" id="resetWeights">恢复默认</button></div>
+      <div class="preference-summary"><span>上海</span><span>产品经理</span><span>成长优先</span><span>混合办公</span></div>
+      <div class="weight-list"><label class="weight-row"><span class="weight-copy"><strong>成长空间</strong><small>更多新业务与能力跃迁</small></span><input type="range" min="0" max="60" step="5" value="30" name="growth" data-weight="growth" /><output>30</output></label><label class="weight-row"><span class="weight-copy"><strong>业务前景</strong><small>行业空间与业务增长潜力</small></span><input type="range" min="0" max="60" step="5" value="25" name="outlook" data-weight="outlook" /><output>25</output></label><label class="weight-row"><span class="weight-copy"><strong>工作生活平衡</strong><small>节奏、强度与通勤</small></span><input type="range" min="0" max="60" step="5" value="20" name="balance" data-weight="balance" /><output>20</output></label><label class="weight-row"><span class="weight-copy"><strong>业务稳定性</strong><small>公司阶段与业务韧性</small></span><input type="range" min="0" max="60" step="5" value="25" name="stability" data-weight="stability" /><output>25</output></label></div>
+      <div class="pref-footer"><span class="fine-print">拖动滑块设置 0–60 的相对权重</span><button class="btn btn-primary btn-lg" type="submit">保存并查看结果 <span class="btn-arrow">→</span></button></div>
+      <p class="privacy-line"><span class="lock">◇</span>将带到工作台，只影响演示页面中的推荐排序。</p>
+    </form>
+
+    <aside class="pref-aside">
+      <div class="side-card">
+        <span class="side-kicker">WHAT HAPPENS NEXT</span>
+        <h3>你的选择会如何影响推荐？</h3>
+        <div class="pref-star-list">
+          <div><span>01</span><p><strong>重新计算偏好分</strong><small>把岗位的成长、前景、平衡与稳定性与你的权重相乘。</small></p></div>
+          <div><span>02</span><p><strong>重新排序结果</strong><small>在硬性筛选与语义匹配之后，应用个性化权重。</small></p></div>
+          <div><span>03</span><p><strong>保留推荐理由</strong><small>无论排序如何变化，每个分数都能追溯到画像与 JD 标签。</small></p></div>
+        </div>
+      </div>
+      <a class="engine-link-card" href="engine.html"><span class="side-kicker">HOW IT WORKS</span><strong>了解混合匹配模型</strong><span>查看技术链路 →</span></a>
+    </aside>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="brand brand-inverse" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+<svg viewBox="0 0 32 32">
+<circle cx="16" cy="16" r="13" fill="currentColor"/>
+<circle cx="16" cy="16" r="7.7" fill="#f6f4ee"/>
+<circle cx="21.8" cy="10.2" r="2.4" fill="#d9f27c"/>
+<path d="M6.3 8.8A13 13 0 0 1 23.2 4" fill="none" stroke="#d9f27c" stroke-width="1.4" stroke-linecap="round" opacity=".78"/>
+</svg>
+</span>
+        <span class="brand-word"><strong>CareerLens</strong><small>职镜</small></span>
+      </a>
+      <p>把选择权，交还给求职者。</p>
+    </div>
+    <div class="footer-column">
+      <span>体验完整流程</span>
+      <a href="upload.html">01 简历解析</a>
+      <a href="jobs.html">02 推荐工作台</a>
+      <a href="job-xhs-growth.html">03 匹配报告</a>
+      <a href="apply-xhs-growth.html">04 官方申请</a>
+      <a href="tracker.html">05 投递追踪</a>
+    </div>
+    <div class="footer-column">
+      <span>快速跳转</span>
+      <a href="index.html">首页</a>
+      <a href="preferences.html">匹配偏好</a>
+      <a href="engine.html">技术链路</a>
+      <a href="sources.html">数据来源核验</a>
+      <a href="job-bd-ai-data.html">字节跳动岗位</a>
+    </div>
+    <div class="footer-meta">
+      <span class="footer-demo">REAL DATA · 2026-11-02</span>
+      <p>6 个岗位来自官方招聘网站。候选人画像为样例，匹配分由演示算法计算。</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>CareerLens 职镜 · AI Career Matching</span>
+    <span>岗位来源可核验 · 数据采集于 2026-11-02</span>
+  </div>
+</footer>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
