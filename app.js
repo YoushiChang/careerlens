@@ -430,7 +430,7 @@
     async function extractPdfText(file) {
       if (!window.pdfjsLib) throw new Error('PDF 解析组件加载失败，请刷新页面后重试。');
       const buf = await file.arrayBuffer();
-      pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('assets/pdf.worker.min.js', document.baseURI).href;
+      pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('pdf.worker.min.js', document.baseURI).href;
       const pdf = await pdfjsLib.getDocument({ data: buf, isEvalSupported: false }).promise;
       let text = '';
       try {

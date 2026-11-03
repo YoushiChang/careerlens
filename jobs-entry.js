@@ -4,12 +4,12 @@
 (() => {
   function loadApp() {
     const app = document.createElement('script');
-    app.src = 'assets/app.js';
+    app.src = 'app.js';
     document.body.appendChild(app);
   }
   if (new URLSearchParams(location.search).get('demo') === '1') {
     const sample = document.createElement('script');
-    sample.src = 'assets/data.js';
+    sample.src = 'data.js';
     sample.onload = loadApp;
     sample.onerror = () => {
       const status = document.querySelector('#gatewayStatus');
